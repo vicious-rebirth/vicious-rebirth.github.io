@@ -4,6 +4,45 @@ on:
   workflow_dispatch:
 
 jobs:
+  vicious-website:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VICIOUS_WEBSITE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Clone repo
+        run: git clone git@github.com:vicious-rebirth/website.git
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Install dependencies
+        working-directory: website
+        run: |
+          pnpm install
+
+      - name: Build Tool
+        working-directory: website
+        run: |
+          pnpm build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vicious-website
+          path: website/dist
+
   vicious-explorer:
     runs-on: ubuntu-latest
     steps:
@@ -72,10 +111,13 @@ jobs:
 
   package:
     runs-on: ubuntu-latest
-    needs: [vicious-explorer]
+    needs: [vicious-explorer, vicious-website]
     steps:
-      - name: Make empty package
-        run: mkdir package
+      - name: Download vicious-website
+        uses: actions/download-artifact@v4
+        with:
+          name: vicious-website
+          path: package
 
       - name: Download vicious-explorer
         uses: actions/download-artifact@v4
@@ -84,9 +126,7 @@ jobs:
           path: package/vicious-explorer
 
       - name: Fix assets
-        run: |
-          mkdir package/assets
-          mv package/vicious-explorer/assets/* package/assets/
+        run: mv package/vicious-explorer/assets/* package/assets/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
