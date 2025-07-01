@@ -64,7 +64,7 @@ jobs:
       - name: Build WASM
         working-directory: vicious
         run: |
-          GOOS=js GOARCH=wasm go build -o build/main.wasm js/main.go
+          GOOS=js GOARCH=wasm go build -ldflags "-s" -o build/main.wasm js/main.go
           cd build
           cp "$(go env GOROOT)/lib/wasm/wasm_exec.js" .
 
