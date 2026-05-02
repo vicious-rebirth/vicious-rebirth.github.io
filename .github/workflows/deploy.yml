@@ -14,7 +14,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: website
-          path: .
+          path: src
 
   vicious:
     runs-on: ubuntu-latest
@@ -29,14 +29,14 @@ jobs:
       - name: Extract
         run: |
           docker create --name tmp build
-          docker cp tmp:/out ./dist
+          docker cp tmp:/out /tmp/dist
           docker rm tmp
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: vicious
-          path: vicious/dist
+          path: /tmp/dist
 
   package:
     runs-on: ubuntu-latest
