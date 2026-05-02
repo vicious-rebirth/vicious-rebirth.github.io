@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <title>Vicious Rebirth</title>
+
+        <style>
+            a {
+                text-decoration: none;
+            }
+
+            h1 {
+                font-size: 20px;
+                text-align: center;
+                margin-bottom: 0;
+            }
+
+            li {
+                margin-bottom: 1em;
+            }
+
+            .logo {
+                width: 4em;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .nav {
+                font-size: 12px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <img class="logo" src="logo.svg" alt="Logo" />
+
+        <h1>Vicious Rebirth</h1>
+        <div class="nav">
+            <a href="https://discord.gg/THhkSMMrEk" target="_blank">Discord</a>
+            |
+            <a href="https://github.com/vicious-rebirth" target="_blank">GitHub</a>
+        </div>
+
+        <hr />
+
+        <h3>Main</h3>
+
+        <ul>
+            <li>
+                <b><a href="docs">docs</a></b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/doc" target="_blank">(git)</a>
+                <br />
+                Unofficial Doxygen documentation of the engine classes. This gives an insight of the many different features of the engine. Currently only for early versions of the engine.
+            </li>
+            <li>
+                <b>edit</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/edit" target="_blank">(git)</a>
+                <br />
+                Visual editor for asset files (ex: <i>.mtl</i>, <i>.snd</i>). This is best effort and not as optimal as other tools for specific file types.
+            </li>
+            <li>
+                <b>pack</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/pack" target="_blank">(git)</a>
+                <br />
+                Merges individual asset files (ex: <i>.mtl</i>, <i>.snd</i>) into a streamed file (ex: <i>.gam</i>, <i>.map</i>).
+            </li>
+            <li>
+                <b><a href="tools/unpack.html">unpack</a></b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/pack" target="_blank">(git)</a>
+                <br />
+                Splits streamed files (ex: <i>.gam</i>, <i>.map</i>) into individual asset files (ex: <i>.mtl</i>, <i>.snd</i>).
+            </li>
+        </ul>
+
+        <hr />
+
+        <h3>Animation</h3>
+
+        <ul>
+            <li>
+                <b>anm2gltf</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/animation" target="_blank">(git)</a>
+                <br />
+                Converts an animation (<i>.anm</i>) to glTF (<i>.glb</i>). This does not include the mesh data, it must be bound to a valid dynamic mesh with skeleton matching joint count.
+            </li>
+        </ul>
+
+        <hr />
+
+        <h3>Audio</h3>
+
+        <ul>
+            <li>
+                <b>mus2wav</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/audio" target="_blank">(git)</a>
+                <br />
+                Converts a music track (<i>.mus</i>) to ADPCM WAV (<i>.wav</i>).
+            </li>
+            <li>
+                <b>wav2mus</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/audio" target="_blank">(git)</a>
+                <br />
+                Converts an ADPCM WAV (<i>.wav</i>) to a music track (<i>.mus</i>).
+            </li>
+            <li>
+                <b>snd2wav</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/audio" target="_blank">(git)</a>
+                <br />
+                Converts a sound effect (<i>.snd</i>) to ADPCM WAV (<i>.wav</i>).
+            </li>
+            <li>
+                <b>wav2snd</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/audio" target="_blank">(git)</a>
+                <br />
+                Converts an ADPCM WAV (<i>.wav</i>) to a sound effect (<i>.snd</i>).
+            </li>
+            <li>
+                <b>wav2xbox</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/audio" target="_blank">(git)</a>
+                <br />
+                Converts an IMA ADPCM WAV (<i>.wav</i>) to an Xbox ADPCM WAV (<i>.wav</i>).
+            </li>
+        </ul>
+
+        <hr />
+
+        <h3>Material</h3>
+
+        <ul>
+             <li>
+                <b>ms2gltf</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/material" target="_blank">(git)</a>
+                <br />
+                Converts a material set (<i>.ms</i>) to glTF (<i>.glb</i>).
+            </li>
+             <li>
+                <b>mtl2gltf</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/material" target="_blank">(git)</a>
+                <br />
+                Converts a material (<i>.mtl</i>) to glTF (<i>.glb</i>).
+            </li>
+        </ul>
+
+        <hr />
+
+        <h3>Mesh</h3>
+
+        <ul>
+             <li>
+                <b>msh2gltf</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/mesh" target="_blank">(git)</a>
+                <br />
+                Converts a mesh (<i>.msh</i>) to glTF (<i>.glb</i>).
+            </li>
+        </ul>
+
+        <hr />
+
+        <h3>Texture</h3>
+
+        <ul>
+            <li>
+                <b>txr2dds</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/texture" target="_blank">(git)</a>
+                <br />
+                Converts a texture (<i>.txr</i>) to DirectDraw Surface (<i>.dds</i>).
+            </li>
+            <li>
+                <b>dds2txr</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/texture" target="_blank">(git)</a>
+                <br />
+                Injects DirectDraw Surface data (<i>.dds</i>) into a texture file (<i>.txr</i>).
+            </li>
+            <li>
+                <b>txr2png</b> <a href="https://github.com/vicious-rebirth/vicious/tree/main/apps/texture" target="_blank">(git)</a>
+                <br />
+                Converts a texture (<i>.txr</i>) to PNG (<i>.png</i>).
+            </li>
+        </ul>
+
+        <hr />
+
+        <center><a href="https://github.com/vicious-rebirth/vicious-rebirth.github.io">Source</a></center>
+    </body>
+</html>

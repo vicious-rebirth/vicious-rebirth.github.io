@@ -1,2 +1,3 @@
-# website
-Public website hosted on GitHub Pages
+# Vicious Rebirth
+
+Website on GitHub Pages
