@@ -7,59 +7,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  website:
+  package:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: website
-          path: src
-
-  vicious:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        run: git clone https://github.com/vicious-rebirth/vicious.git
-
-      - name: Build
-        working-directory: vicious
-        run: docker build -t build -f packages/docker/build/web/Dockerfile .
-
-      - name: Extract
-        run: |
-          docker create --name tmp build
-          docker cp tmp:/out /tmp/dist
-          docker rm tmp
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: vicious
-          path: /tmp/dist
-
-  package:
-    runs-on: ubuntu-latest
-    needs: [vicious, website]
-    steps:
-      - name: Download website
-        uses: actions/download-artifact@v4
-        with:
-          name: website
-          path: package
-
       - name: Download vicious
-        uses: actions/download-artifact@v4
-        with:
-          name: vicious
-          path: vicious
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download \
+            --repo vicious-rebirth/vicious \
+            --pattern "web.zip"
+          unzip web.zip
 
       - name: Package
         run: |
-          mv vicious/* package/
+          mv src package
+          mv web/* package/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
