@@ -7,6 +7,10 @@
                 text-decoration: none;
             }
 
+            body {
+                background: white;
+            }
+
             h1 {
                 font-size: 20px;
                 text-align: center;
@@ -27,6 +31,12 @@
             .nav {
                 font-size: 12px;
                 text-align: center;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                html {
+                    filter: invert(1) hue-rotate(180deg);
+                }
             }
         </style>
     </head>
